@@ -24,17 +24,17 @@ def dfs_traversal(G, start, traversed = {}, traversalord = 1):
     traversed[start]['order'] = traversalord
     for neighbor in G[start]:
         if neighbor not in traversed:
-            traversalord += 1
-            dfs_traversal(G, neighbor, traversed, traversalord)
+            traversalord = traversalord + 1
+            traversed = dfs_traversal(G, neighbor, traversed, traversalord)
     return traversed
 
 
 # Examples for generating a graph
-edges = [('a', 'g'), ('a', 'd'), ('g', 'c'), ('g', 'd')]
+edges = [('a', 'g'), ('a', 'd'), ('g', 'c'), ('g', 'd'), ('a','b'), ('b','e'),('d','f')]
 edges2 = [('a','b'),('a','e'),('b','f'),('b','g'),('b','h'),('c','e'),('c','f'),('d','g'),('d','h'),
           ('e','f'),('e','i'),('f','j'),('i','j')]
 G = {}
-for v1, v2 in edges2:
+for v1, v2 in edges:
     make_link(G, v1, v2)
 
 # Print the traversed graph after DFS by starting at given node.

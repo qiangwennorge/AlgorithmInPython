@@ -18,29 +18,30 @@ def make_link(G, node1, node2):
 
 # Traverse the graph, if the node is traversed, then 'marked' will be set True
 # The order of the visit will also be added
-def dfs_traversal(G, start, traversed = {}, traversalord = 1, s = []):
+def dfs_traversal(G, start, traversed = {}, traversalord = 0, s = []):
     s.append(start)
+    '''
     traversed[start] = {}
     traversed[start]['marked'] = True
     traversed[start]['order'] = traversalord
-    while len(s) > 0:
+    '''
+    while s:
         current = s.pop()
-        for neighbor in G[current]:
-            if neighbor not in traversed:
-                traversed[neighbor] = {}
-                traversalord += 1
-                traversed[neighbor]['marked'] = True
-                traversed[neighbor]['order'] = traversalord
-                s.append(neighbor)
+        if current not in traversed:
+            traversed[current] = {}
+            traversalord += 1
+            traversed[current]['marked'] = True
+            traversed[current]['order'] = traversalord
+            s.extend([node for node in G[current] if node not in traversed and node not in s])
     return traversed
 
 
 # Examples for generating a graph
-edges = [('a', 'g'), ('a', 'd'), ('g', 'c'), ('g', 'd')]
+edges = [('a', 'g'), ('a', 'd'), ('g', 'c'), ('g', 'd'), ('a','b'), ('b','e'),('d','f')]
 edges2 = [('a','b'),('a','e'),('b','f'),('b','g'),('b','h'),('c','e'),('c','f'),('d','g'),('d','h'),
           ('e','f'),('e','i'),('f','j'),('i','j')]
 G = {}
-for v1, v2 in edges2:
+for v1, v2 in edges:
     make_link(G, v1, v2)
 
 # Print the traversed graph after DFS by starting at given node.

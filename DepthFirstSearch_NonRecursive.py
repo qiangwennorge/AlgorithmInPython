@@ -20,11 +20,6 @@ def make_link(G, node1, node2):
 # The order of the visit will also be added
 def dfs_traversal(G, start, traversed = {}, traversalord = 0, s = []):
     s.append(start)
-    '''
-    traversed[start] = {}
-    traversed[start]['marked'] = True
-    traversed[start]['order'] = traversalord
-    '''
     while s:
         current = s.pop()
         if current not in traversed:

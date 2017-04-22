@@ -17,5 +17,13 @@ def one_child(L,i):
     return (left_child(i) < len(L)) and (right_child(i) >= len(L))
 
 def up_heapify(L, i):
-    # your code here
+    while L[i] < L[parent(i)] and i > 0:
+        (L[parent(i)],L[i]) = (L[i],L[parent(i)])
+        i = parent(i)
+    print L
     return
+
+L = [2, 4, 3, 5, 9, 7, 7]
+L.append(1)
+
+up_heapify(L,7)

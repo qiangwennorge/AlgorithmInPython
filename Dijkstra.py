@@ -40,9 +40,9 @@ def dijkstra(G,v):
                     dist_so_far[x] = final_dist[w] + G[w][x]
     return final_dist
 
-(a,b,c,d,e,f,g) = ('A','B','C','D','E','F','G')
+(a,b,c,d,e,f,g,h,i) = ('A','B','C','D','E','F','G','H','I')
 triples = ((a,c,3),(c,b,10),(a,b,15),(d,b,9),(a,d,4),(d,f,7),(d,e,3),
-           (e,g,1),(e,f,5),(f,g,2),(b,f,1))
+           (e,g,1),(e,f,5),(f,g,2),(b,f,1),(h,i,3),(a,i,8),(b,h,2))
 
 G = {}
 
